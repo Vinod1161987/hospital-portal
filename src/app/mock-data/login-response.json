@@ -1,0 +1,6 @@
+{
+    "id": 1,
+    "tokenType": "Bearer",
+    "accessToken": "ewogICAgInN1YiI6IDEsCiAgICAiZmlyc3ROYW1lIjogIlZpbm9kIiwKICAgICJsYXN0TmFtZSI6ICJCaG9pdGUiLAogICAgInVzZXJUeXBlIjogIkRvY3RvciIKfQ==",
+    "expiredIn": "3600"
+}

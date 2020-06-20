@@ -24,7 +24,7 @@ private loggedInUser:  Observable<LoginResponse>;
        username: username,
        password: password
      }
-    return this.httpClientService.post(user).pipe(
+    return this.httpClientService.post("",[],{}).pipe(
       map(res => {
         res.JSON(); console.log(res.JSON())}));
      // call http post method - to authorize user

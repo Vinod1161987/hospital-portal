@@ -11,6 +11,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCommonModule, MatOptionModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +33,16 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCommonModule,
+    MatOptionModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatIconModule,
+    MatTabsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

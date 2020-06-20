@@ -3,35 +3,64 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/internal/operators/map';
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { Observable } from 'rxjs';
+import { RequestType } from '../enum/request-type';
+import { ResponseType } from '../enum/response-type';
+import { HelperService } from './http-helper.service';
 @Injectable({
   providedIn: 'root'
 })
 export class HttpClientService {
 
-  constructor(private readonly httpClient: HttpClient) { }
-  get(): Observable<any>{ 
-    return this.httpClient.get("");    
+  constructor(private readonly httpClient: HttpClient,
+    private readonly helperService: HelperService) { }
+  
+  get(url: string, headersList: any): Observable<any> {
+    const httpHeaders = this.helperService.getHeaders(headersList);
+    return this.httpClient.get(url, { headers: httpHeaders })
+      .pipe(
+        map((response: any) => {
+          //this.loggerService.info(this.createLogObject(url, headersList, RequestType.GET, response, ResponseType.SUCCESS)).subscribe();
+          return this.helperService.responseConstructor(response);
+        }),
+        catchError((error: Response) => {
+          //this.loggerService.error(this.createLogObject(url, headersList, RequestType.GET, error, ResponseType.FAIL)).subscribe();
+          return this.helperService.sendInvalidResponse(null, error.status, error.statusText);
+        }));
   }
 
-  post(entity:any): Observable<any>{
-    // return this.httpClient.post('../mock-data/login-response',[]).pipe(map(res => res.json()))
-    //                     .do(data => console.log(data));
-    if(entity.username == 'Vinod')
-      return Observable.create(observer => {
-        observer.next('{"id": 1,"tokenType": "Bearer","accessToken": "ewogICAgInN1YiI6IDEsCiAgICAiZmlyc3ROYW1lIjogIlZpbm9kIiwKICAgICJsYXN0TmFtZSI6ICJCaG9pdGUiLAogICAgInVzZXJUeXBlIjogIkRvY3RvciIKfQ==","expiredIn": "3600"}');
-      });
-      else{
-        return Observable.create(observer => {
-          observer.next(null);
-        });
-      }
+  post(url: string, data: any, headersList: any): Observable<any> {
+    return this.httpClient
+      .post(url, data, { headers: this.helperService.getHeaders(headersList) })
+      .pipe(map((response: any) => {
+        //this.loggerService.info(this.createLogObject(url, headersList, RequestType.GET, response, ResponseType.SUCCESS)).subscribe();
+        return this.helperService.responseConstructor(response);
+      }),
+        catchError((error: Response) => {
+          //this.loggerService.error(this.createLogObject(url, headersList, RequestType.GET, error, ResponseType.FAIL)).subscribe();
+          return this.helperService.sendInvalidResponse(null, error.status, error.statusText);
+        }));
   }
 
-  put(): Observable<any>{
-    return this.httpClient.put("",{});
+  delete(url: string, headersList: any): Observable<any> {
+    return this.httpClient
+      .delete(url, { headers: this.helperService.getHeaders(headersList) })
+      .pipe(map((response: any) => {
+        return this.helperService.responseConstructor(response);
+      }),
+        catchError((error: Response) => {
+          return this.helperService.sendInvalidResponse(null, error.status, error.statusText);
+        }));
   }
 
-  delete(): Observable<any>{
-    return this.httpClient.delete("");
+  put(url: string, data: any, headersList: any): Observable<any> {
+    return this.httpClient
+      .put(url, null, { headers: this.helperService.getHeaders(headersList) })
+      .pipe(map((response: any) => {
+        return this.helperService.responseConstructor(response);
+      }),
+        catchError((error: Response) => {
+          return this.helperService.sendInvalidResponse(null, error.status, error.statusText);
+        }));
   }
+  
 }

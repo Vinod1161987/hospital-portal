@@ -3,28 +3,29 @@
 ﻿<div>
     <div>
         <form [formGroup]="loginForm" (ngSubmit)="submit()">
-            <div class="form-group">
-                <label for="username">User Name:</label>
+            <!-- <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                <mat-label>Enter some input</mat-label>
+                <input matInput #input maxlength="10" placeholder="Ex. Nougat">
+                <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+              </mat-form-field> -->
+            <div class="form-group">                
                 <!-- <input type="text" id="username" formControlName="username" class="formControl"> -->
-                <mat-form-field>
-                    <mat-label></mat-label>
-                    <input placeholder="UserName">
-                  </mat-form-field>
+                <mat-form-field appearence="fill">
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="Username">
+                </mat-form-field>
             </div>
-            <div *ngIf="isEmptyUserName()"
-                class="alert alert-danger">
+            <div *ngIf="isEmptyUserName()" class="alert alert-danger">
                 <div *ngIf="lf.username.errors.required">Username is required</div>
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
                 <!-- <input type="text" id="password" formControlName="password" class="formControl"> -->
                 <mat-form-field>
-                    <mat-label></mat-label>
-                    <input placeholder="Password">
-                  </mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Password">
+                </mat-form-field>
             </div>
-            <div *ngIf="isEmptyPassword()"
-                class="alert alert-danger">
+            <div *ngIf="isEmptyPassword()" class="alert alert-danger">
                 <div *ngIf="lf.password.errors.required">Password is required</div>
                 <div *ngIf="lf.password.errors.minlength">Password must be at least 6 characters</div>
             </div>

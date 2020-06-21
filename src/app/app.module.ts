@@ -14,11 +14,13 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatCommonModule, MatOptionModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
-    MatTabsModule
+    MatTabsModule,
+    MatToolbarModule,
+    MatMenuModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

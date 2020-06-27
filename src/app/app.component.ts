@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   
   title = 'HospitalPortal';
-  customerName = "VIGH Hospital";
+  customerName = "VIGHNESHWAR Hospital";
   
   constructor(){}
   currentTime = new Observable<string>(observer => {setInterval(() => observer.next(new Date().toString()), 1000)});

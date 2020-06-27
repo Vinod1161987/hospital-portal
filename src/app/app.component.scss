@@ -6,7 +6,21 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
+  .tp-container {
+    display: flex;
+    flex-direction: column;
+ }
+ .tp-container > * {
+    width: 100%;
+ }
+ .tp-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+.tp-full-width {
+  width: 100%;
+}
   h1,
   h2,
   h3,

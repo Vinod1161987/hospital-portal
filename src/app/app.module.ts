@@ -12,7 +12,7 @@ import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
@@ -28,6 +28,9 @@ import { PatientComponent } from './components/patient/patient.component';
 import { SearchComponent } from './components/search/search.component';
 import { PatientlistComponent } from './components/patientlist/patientlist.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatRadioModule } from '@angular/material/radio';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +64,9 @@ import { MatTableModule } from '@angular/material/table';
     MatAutocompleteModule,
     MatSelectModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatGridListModule,
+    MatRadioModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

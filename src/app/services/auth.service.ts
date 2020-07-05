@@ -30,7 +30,8 @@ private loggedInUser:  Observable<LoginResponse>;
         {
           if(res.status==="200")
           {
-            localStorage.setItem("user",JSON.stringify(res.data.accessToken))
+            localStorage.setItem("accessToken",JSON.stringify(res.data.accessToken));
+            localStorage.setItem("loggedInUser",JSON.stringify(res.data));
             this.loggedInUserSubject.next(res.data)
           }
           return res;

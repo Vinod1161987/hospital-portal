@@ -1,6 +1,6 @@
 export class LoginResponse {
-    Id: string;
-    Name: string;
-    Address: string;
-    MobileNo: string;
+    id: string;
+    name: string;
+    address: string;
+    mobileNo: string;
 }

@@ -6,7 +6,21 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
+  .tp-container {
+    display: flex;
+    flex-direction: column;
+ }
+ .tp-container > * {
+    width: 100%;
+ }
+ .tp-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+.tp-full-width {
+  width: 100%;
+}
   h1,
   h2,
   h3,
@@ -292,7 +306,17 @@
       transform: rotate(-5deg);
     }
   }
-
+  .tp-radio-group {
+    display: inline-flex;
+    flex-direction: column;
+ }
+ .tp-radio-button {
+    margin: 5px;
+ }
+ .tp-selected-value {
+    margin: 15px 0;
+ }
+ 
   @media screen and (max-width: 575px) {
     svg#rocket-smoke {
       display: none;

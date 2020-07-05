@@ -1,0 +1,15 @@
+<form class = "tp-form">
+    <mat-form-field class = "tp-full-width">
+       <input type = "text" 
+          placeholder = "Search By Name or Phone number" 
+          aria-label = "Number" 
+          matInput 
+          [formControl] = "patientSearchControl" 
+          [matAutocomplete] = "auto">
+       <mat-autocomplete #auto = "matAutocomplete">
+          <mat-option *ngFor = "let patient of patients" [value] = "patient.id">
+             {{patient.fullName}}
+          </mat-option>
+       </mat-autocomplete>
+    </mat-form-field>
+ </form>

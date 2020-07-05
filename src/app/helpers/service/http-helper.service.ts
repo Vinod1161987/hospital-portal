@@ -84,7 +84,7 @@ export class HelperService {
       headers.forEach(item => {
           headerList = headerList.set(item.key, item.value);
       });
-      headerList = headerList.set(Constants.authorizationKey, `${Constants.bearer} ${localStorage.getItem(Constants.userKey)}`);
+      headerList = headerList.set(Constants.authorizationKey, `${Constants.bearer} ${localStorage.getItem(Constants.accessTokenKey)}`);
       const iscontentTypeExist = headers.filter(item => item.key === Constants.contentTypeValue);
       if (!iscontentTypeExist) {
           headerList = headerList.set(Constants.contentType, Constants.contentTypeValue);

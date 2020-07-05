@@ -12,4 +12,9 @@ export default class Constants {
     public static readonly defaultExceptionMessage = 'Something went wrong, please try again after some time!';
     public static readonly accessTokenKey = 'access_token';
     public static readonly userKey = 'user';
+    public static readonly userId = 'userId';
+    public static readonly userPassword = 'userPassword';
+    public static readonly ls_AccessToken = 'accessToken';
+    public static readonly ls_LoggedInUser = 'loggedInUser';
+    public static readonly passwordRegxPattern='((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]))';
 }

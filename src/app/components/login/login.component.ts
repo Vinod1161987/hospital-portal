@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import Constants from 'src/app/helpers/constants';
 
 @Component({
   selector: 'app-login',
@@ -16,10 +17,9 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
-    var passwordPattern = '((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]))'
     this.loginForm = this.formBuilder.group({
       "username": ['', [Validators.required, Validators.minLength(4)]],
-      "password":['', [Validators.required, Validators.minLength(6), Validators.max(12), Validators.pattern(passwordPattern)]]
+      "password":['', [Validators.required, Validators.minLength(6), Validators.max(12), Validators.pattern(Constants.passwordRegxPattern)]]
     });
   }
   // convenience getter for easy access to form fields

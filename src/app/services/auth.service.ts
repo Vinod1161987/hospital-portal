@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClientService } from '../helpers/service/http-client.service';
 import { map } from 'rxjs/internal/operators/map';
 import { JAN } from '@angular/material/core';
+import Constants from '../helpers/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -22,16 +23,16 @@ private loggedInUser:  Observable<LoginResponse>;
 
    login(username:string, password: string){
      const headers = [];
-     headers.push({key:'credential',value:username})
-     headers.push({key:'credential-value',value:password})
+     headers.push({key:Constants.userId,value:username})
+     headers.push({key:Constants.userPassword,value:password})
      return this.httpClientService.post("users/authenticate",{},headers)
      .pipe(
        map(res=>
         {
           if(res.status==="200")
           {
-            localStorage.setItem("accessToken",JSON.stringify(res.data.accessToken));
-            localStorage.setItem("loggedInUser",JSON.stringify(res.data));
+            localStorage.setItem(Constants.ls_AccessToken,JSON.stringify(res.data.accessToken));
+            localStorage.setItem(Constants.ls_LoggedInUser,JSON.stringify(res.data));
             this.loggedInUserSubject.next(res.data)
           }
           return res;

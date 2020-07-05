@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  hospitalPortalUrl :"http://localhost:80"
+  hospitalPortalUrl :"http://localhost:80",
+  apiurl:"http://localhost:3000/"
+
 };
 
 /*

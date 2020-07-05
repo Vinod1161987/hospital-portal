@@ -34,12 +34,14 @@ export class HelperService {
 
     responseConstructor(response: any): any {
         const responseModel = new ResponseModel();
+        
         if (response != null) {
             responseModel.data = response.data ? response.data : null;
             responseModel.statusCode = response.status ? response.status.code : 200;
             responseModel.statusMessage = response.status ? response.status.message : '';
             responseModel.paging = response.paging ? response.paging : null;
         }
+        
         return responseModel;
     }
 
@@ -82,7 +84,7 @@ export class HelperService {
       headers.forEach(item => {
           headerList = headerList.set(item.key, item.value);
       });
-      headerList = headerList.set(Constants.authorizationKey, `${Constants.bearer} ${sessionStorage.getItem(Constants.accessTokenKey)}`);
+      headerList = headerList.set(Constants.authorizationKey, `${Constants.bearer} ${localStorage.getItem(Constants.userKey)}`);
       const iscontentTypeExist = headers.filter(item => item.key === Constants.contentTypeValue);
       if (!iscontentTypeExist) {
           headerList = headerList.set(Constants.contentType, Constants.contentTypeValue);

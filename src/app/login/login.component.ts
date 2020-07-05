@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     var passwordPattern = '((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]))'
     this.loginForm = this.formBuilder.group({
-      "username": ['', Validators.required, Validators.minLength(4)],
-      "password":['', Validators.required, Validators.minLength(6), Validators.max(12), Validators.pattern(passwordPattern)]
+      "username": ['', [Validators.required, Validators.minLength(4)]],
+      "password":['', [Validators.required, Validators.minLength(6), Validators.max(12), Validators.pattern(passwordPattern)]]
     });
   }
   // convenience getter for easy access to form fields
@@ -33,6 +33,6 @@ export class LoginComponent implements OnInit {
     return this.lf['password'].invalid && (this.lf['password'].dirty || this.lf['password'].touched);
   }
   submit(){
-    this.authService.login(this.lf.username.value, this.lf.password.value);
+    this.authService.login(this.lf.username.value, this.lf.password.value).subscribe(data=>console.log(data))
   }
 }

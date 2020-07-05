@@ -11,4 +11,5 @@ export default class Constants {
     public static readonly internalServerExceptionMessage = 'Internal server error';
     public static readonly defaultExceptionMessage = 'Something went wrong, please try again after some time!';
     public static readonly accessTokenKey = 'access_token';
+    public static readonly userKey = 'user';
 }

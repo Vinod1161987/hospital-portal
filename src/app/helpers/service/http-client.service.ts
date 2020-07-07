@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { RequestType } from '../enum/request-type';
 import { ResponseType } from '../enum/response-type';
 import { HelperService } from './http-helper.service';
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,13 +30,16 @@ export class HttpClientService {
   }
 
   post(url: string, data: any, headersList: any): Observable<any> {
+    const httpHeaders = this.helperService.getHeaders(headersList);
     return this.httpClient
-      .post(url, data, { headers: this.helperService.getHeaders(headersList) })
+      .post(environment.apiurl+ url, data,{headers:httpHeaders})
       .pipe(map((response: any) => {
-        //this.loggerService.info(this.createLogObject(url, headersList, RequestType.GET, response, ResponseType.SUCCESS)).subscribe();
-        return this.helperService.responseConstructor(response);
+        console.log(response);
+         const responseModel = this.helperService.responseConstructor(response);
+         return responseModel;
       }),
         catchError((error: Response) => {
+          console.log(error);
           //this.loggerService.error(this.createLogObject(url, headersList, RequestType.GET, error, ResponseType.FAIL)).subscribe();
           return this.helperService.sendInvalidResponse(null, error.status, error.statusText);
         }));

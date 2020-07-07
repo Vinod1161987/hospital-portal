@@ -10,7 +10,7 @@
                 <!-- <input type="text" id="username" formControlName="username" class="formControl"> -->
                 <mat-form-field appearence="fill">
                     <mat-label>Username</mat-label>
-                    <input matInput placeholder="Username">
+                    <input matInput placeholder="Username" formControlName="username" >
                 </mat-form-field>
             </div>
             <div *ngIf="isEmptyUserName()" class="alert alert-danger">
@@ -20,12 +20,11 @@
                 <!-- <input type="text" id="password" formControlName="password" class="formControl"> -->
                 <mat-form-field>
                     <mat-label>Password</mat-label>
-                    <input matInput placeholder="Password">
+                    <input matInput placeholder="Password" type="password" formControlName="password">
                 </mat-form-field>
             </div>
             <div *ngIf="isEmptyPassword()" class="alert alert-danger">
                 <div *ngIf="lf.password.errors.required">Password is required</div>
-                <div *ngIf="lf.password.errors.minlength">Password must be at least 6 characters</div>
             </div>
             <button mat-raised-button color="primary">
                 Login

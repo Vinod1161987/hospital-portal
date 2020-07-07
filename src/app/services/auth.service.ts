@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { LoginResponse } from '../models/login-response';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClientService } from '../helpers/service/http-client.service';
 import { map } from 'rxjs/internal/operators/map';
+import { JAN } from '@angular/material/core';
+import Constants from '../helpers/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -19,14 +20,24 @@ private loggedInUser:  Observable<LoginResponse>;
    public getLoggedInUser(): LoginResponse {
       return this.loggedInUserSubject.value;
    }
+
    login(username:string, password: string){
-     var user = {
-       username: username,
-       password: password
-     }
-    return this.httpClientService.post("",[],{}).pipe(
-      map(res => {
-        res.JSON(); console.log(res.JSON())}));
+     const headers = [];
+     headers.push({key:Constants.userId,value:username})
+     headers.push({key:Constants.userPassword,value:password})
+     return this.httpClientService.post("users/authenticate",{},headers)
+     .pipe(
+       map(res=>
+        {
+          if(res.status==="200")
+          {
+            localStorage.setItem(Constants.ls_AccessToken,JSON.stringify(res.data.accessToken));
+            localStorage.setItem(Constants.ls_LoggedInUser,JSON.stringify(res.data));
+            this.loggedInUserSubject.next(res.data)
+          }
+          return res;
+       })
+     );
      // call http post method - to authorize user
      // response - set local storage item
      // set BehaviourSubject = reponse object

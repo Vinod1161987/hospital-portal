@@ -4,7 +4,7 @@ export class PatientModel {
     middleName: string;
     lastName: string;
     age: number
-    gender: number
+    gender: string
     mobileNo: number
     emergencyContactNo: number;
     address: string;

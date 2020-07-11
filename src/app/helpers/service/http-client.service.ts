@@ -30,17 +30,14 @@ export class HttpClientService {
   }
 
   post(url: string, data: any, headersList: any): Observable<any> {
-    console.log(data);
     const httpHeaders = this.helperService.getHeaders(headersList);
     return this.httpClient
       .post(`${environment.apiurl}/${url}`, data,{headers:httpHeaders})
       .pipe(map((response: any) => {
-        console.log(response);
          const responseModel = this.helperService.responseConstructor(response);
          return responseModel;
       }),
         catchError((error: Response) => {
-          console.log(error);
           //this.loggerService.error(this.createLogObject(url, headersList, RequestType.GET, error, ResponseType.FAIL)).subscribe();
           return this.helperService.sendInvalidResponse(null, error.status, error.statusText);
         }));

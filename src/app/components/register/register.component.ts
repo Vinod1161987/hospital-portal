@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
   submit() {
     console.log("called..");
     this.patientModel = <PatientModel>this.patientRegistrationFormGroup.value;
-    this.registrationService.saveAndQueue(this.patientModel);
+    this.registrationService.saveAndQueue(this.patientModel).subscribe(data=>console.log(data));
   }
 
   errorHandler(controlName: string, error: string) {

@@ -25,11 +25,11 @@ private loggedInUser:  Observable<LoginResponse>;
      const headers = [];
      headers.push({key:Constants.userId,value:username})
      headers.push({key:Constants.userPassword,value:password})
-     return this.httpClientService.post("users/authenticate",{},headers)
+     return this.httpClientService.post("user/authenticate",{},headers)
      .pipe(
        map(res=>
         {
-          if(res.status==="200")
+          if(res.statusCode===200)
           {
             localStorage.setItem(Constants.ls_AccessToken,JSON.stringify(res.data.accessToken));
             localStorage.setItem(Constants.ls_LoggedInUser,JSON.stringify(res.data));

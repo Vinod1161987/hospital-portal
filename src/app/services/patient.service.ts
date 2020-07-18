@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClientService } from '../helpers/service/http-client.service';
 import { PatientModel } from '../models/patient-model';
+import { map } from 'rxjs/internal/operators/map';
+import Constants from '../helpers/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +10,20 @@ import { PatientModel } from '../models/patient-model';
 export class PatientService {
 
   constructor(private httpClientService: HttpClientService) { }
-  save(patientModel: PatientModel){
+  save(patientModel: PatientModel) {
     const headers = [];
-    return  this.httpClientService.post("user/registration", patientModel, headers);
+    patientModel.token = this.getPatientToken();
+    patientModel.patientAppointmentDate = new Date()
+    return this.httpClientService.post("patient/add", patientModel, headers).pipe(map((res) => {
+      localStorage.setItem(Constants.activeTokenNumber_lsKey, patientModel.token.toString());
+    }));
+  }
+
+  getPatientToken(): number {
+    let latestToken = localStorage.getItem(Constants.activeTokenNumber_lsKey);
+    if (latestToken) {
+      return parseInt(latestToken) + 1;
+    }
+    return 1;
   }
 }

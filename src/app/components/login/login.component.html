@@ -26,9 +26,11 @@
             <div *ngIf="isEmptyPassword()" class="alert alert-danger">
                 <div *ngIf="lf.password.errors.required">Password is required</div>
             </div>
+            
             <button mat-raised-button color="primary">
                 Login
             </button>
+            
         </form>
     </div>
 </div>

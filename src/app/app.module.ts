@@ -30,17 +30,22 @@ import { PatientlistComponent } from './components/patientlist/patientlist.compo
 import { MatTableModule } from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
+import { PatientQueueListComponent } from './components/patient-queue-list/patient-queue-list.component';
+import { AddPatientComponent } from './components/add-patient/add-patient.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    AddPatientComponent,
     DashboardComponent,
     MenuComponent,
     PatientComponent,
     SearchComponent,
-    PatientlistComponent
+    PatientlistComponent,
+    PatientQueueListComponent,
+    AddPatientComponent
   ],
   imports: [
     BrowserModule,

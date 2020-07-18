@@ -6,11 +6,12 @@ import { AuthService } from '../services/auth.service';
 export class AuthGuard implements CanActivate {
     constructor(private authService: AuthService, private router: Router) { }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        console.log(state.url)
         const loggedInUser = this.authService.getLoggedInUser();
         if (loggedInUser) {
             return true;
         }
 
-        this.router.navigate(['./login'], { queryParams: { retunUrl: state.url } });
+        this.router.navigate(['./login'], { queryParams: { returnUrl: state.url } });
     }
 }

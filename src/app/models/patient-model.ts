@@ -8,4 +8,6 @@ export class PatientModel {
     mobileNo: number
     emergencyContactNo: number;
     address: string;
+    token: number;
+    patientAppointmentDate: Date
 } 

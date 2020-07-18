@@ -14,7 +14,11 @@ export default class Constants {
     public static readonly userKey = 'user';
     public static readonly userId = 'userId';
     public static readonly userPassword = 'userPassword';
-    public static readonly ls_AccessToken = 'accessToken';
-    public static readonly ls_LoggedInUser = 'loggedInUser';
+    public static readonly accessToken_lsKey = 'accessToken';
+    public static readonly loggedInUser_lsKey = 'user';
+    public static readonly returnUrl = 'returnUrl';
     public static readonly passwordRegxPattern='((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]))';
+    public static readonly login_routePath = '/login'
+    public static readonly dashboard_routePath = '/dashboard'
+
 }

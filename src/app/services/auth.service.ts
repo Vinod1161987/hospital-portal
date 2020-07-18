@@ -31,8 +31,8 @@ private loggedInUser:  Observable<LoginResponse>;
         {
           if(res.statusCode===200)
           {
-            localStorage.setItem(Constants.ls_AccessToken,JSON.stringify(res.data.accessToken));
-            localStorage.setItem(Constants.ls_LoggedInUser,JSON.stringify(res.data));
+            localStorage.setItem(Constants.accessToken_lsKey,JSON.stringify(res.data.accessToken));
+            localStorage.setItem(Constants.loggedInUser_lsKey,JSON.stringify(res.data));
             this.loggedInUserSubject.next(res.data)
           }
           return res;
@@ -43,7 +43,8 @@ private loggedInUser:  Observable<LoginResponse>;
      // set BehaviourSubject = reponse object
    }
    logout(){
-     localStorage.removeItem("user");
+     localStorage.removeItem(Constants.accessToken_lsKey);
+     localStorage.removeItem(Constants.loggedInUser_lsKey);
      this.loggedInUserSubject.next(null);
    }
 }

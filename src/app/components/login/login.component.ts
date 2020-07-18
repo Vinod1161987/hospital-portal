@@ -35,22 +35,19 @@ export class LoginComponent implements OnInit {
   // convenience getter for easy access to form fields
   get lf() { return this.loginForm.controls; }
 
-
   isEmptyUserName() {
     let isValidUsername = this.isSubmitted && (this.lf['username'].invalid && (this.lf['username'].dirty || this.lf['username'].touched));
-    console.log("isValidUsername" + isValidUsername);
     return isValidUsername;
   }
   isEmptyPassword() {  
     let isValidPassword =  this.isSubmitted && (this.lf['password'].invalid && (this.lf['password'].dirty || this.lf['password'].touched)); 
-    console.log("isValidPassword" + isValidPassword);
     return isValidPassword;
   }
   submit() {
     this.isSubmitted = true;
-    if(this.loginForm.invalid){
-      return;
-    }
+    // if(this.loginForm.invalid){
+    //   return;
+    // }
     this.authService.login(this.lf.username.value, this.lf.password.value).subscribe(data => {
       console.log(data);
       if (data.statusCode == 200) {

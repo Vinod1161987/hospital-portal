@@ -17,7 +17,7 @@ export class HttpClientService {
   
   get(url: string, headersList: any): Observable<any> {
     const httpHeaders = this.helperService.getHeaders(headersList);
-    return this.httpClient.get(url, { headers: httpHeaders })
+    return this.httpClient.get(`${environment.apiurl}/${url}`, { headers: httpHeaders })
       .pipe(
         map((response: any) => {
           //this.loggerService.info(this.createLogObject(url, headersList, RequestType.GET, response, ResponseType.SUCCESS)).subscribe();
@@ -45,7 +45,7 @@ export class HttpClientService {
 
   delete(url: string, headersList: any): Observable<any> {
     return this.httpClient
-      .delete(url, { headers: this.helperService.getHeaders(headersList) })
+      .delete(`${environment.apiurl}/${url}`, { headers: this.helperService.getHeaders(headersList) })
       .pipe(map((response: any) => {
         return this.helperService.responseConstructor(response);
       }),
@@ -56,7 +56,7 @@ export class HttpClientService {
 
   put(url: string, data: any, headersList: any): Observable<any> {
     return this.httpClient
-      .put(url, null, { headers: this.helperService.getHeaders(headersList) })
+      .put(`${environment.apiurl}/${url}`, null, { headers: this.helperService.getHeaders(headersList) })
       .pipe(map((response: any) => {
         return this.helperService.responseConstructor(response);
       }),

@@ -9,7 +9,7 @@ const routes: Routes = [
   {path:'', component: DashboardComponent},
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent},
-  {path:'patient', component: PatientComponent}  
+  {path:'patient', component: PatientComponent,canActivate:[AuthGuard]}  
 ];
 
 @NgModule({

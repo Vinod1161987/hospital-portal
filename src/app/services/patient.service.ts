@@ -15,7 +15,7 @@ export class PatientService {
     patientModel.token = this.getPatientToken();
     patientModel.patientAppointmentDate = new Date()
     return this.httpClientService.post("patient/add", patientModel, headers).pipe(map((res) => {
-      localStorage.setItem(Constants.activeTokenNumber_lsKey, patientModel.token.toString());
+      localStorage.setItem(Constants.lastTokenNumber_lsKey, patientModel.token.toString());
     }));
   }
 
@@ -24,6 +24,9 @@ export class PatientService {
     if (latestToken) {
       return parseInt(latestToken) + 1;
     }
-    return 1;
+    else{
+      localStorage.setItem(Constants.activeTokenNumber_lsKey, "1");
+      return 1;
+    }
   }
 }

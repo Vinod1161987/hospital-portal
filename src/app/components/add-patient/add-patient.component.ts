@@ -32,7 +32,6 @@ export class AddPatientComponent implements OnInit {
   get rf() { return this.patientFormGroup.controls; }
 
   submit() {
-    console.log("called..");
     this.patientModel = <PatientModel>this.patientFormGroup.value;
     this.patientService.save(this.patientModel).subscribe(data => {
       console.log(data);

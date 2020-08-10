@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -24,13 +23,13 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MenuComponent } from './components/menu/menu.component';
 import { PatientComponent } from './components/patient/patient.component';
-import { SearchComponent } from './components/search/search.component';
-import { PatientlistComponent } from './components/patientlist/patientlist.component';
+import { SearchComponent } from './components/patient/search/search.component';
+import { PatientlistComponent } from './components/patient/patientlist/patientlist.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
-import { PatientQueueListComponent } from './components/patient-queue-list/patient-queue-list.component';
-import { AddPatientComponent } from './components/add-patient/add-patient.component';
+import { PatientQueueListComponent } from './components/patient/patient-queue-list/patient-queue-list.component';
+import { AddPatientComponent } from './components/patient/add-patient/add-patient.component';
 
 @NgModule({
   declarations: [

@@ -10,6 +10,10 @@ import Constants from '../helpers/constants';
 export class PatientService {
 
   constructor(private httpClientService: HttpClientService) { }
+  getPatients() {
+    const headers = [];
+    return this.httpClientService.get("patient/getPatients", headers);
+  }
   save(patientModel: PatientModel) {
     const headers = [];
     patientModel.token = this.getPatientToken();

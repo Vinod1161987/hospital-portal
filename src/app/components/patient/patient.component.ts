@@ -9,42 +9,29 @@ import { PatientService } from '../../services/patient.service';
   styleUrls: ['./patient.component.scss']
 })
 export class PatientComponent implements OnInit {
-  patientRegistrationFormGroup: FormGroup;
-  returnUrl: string;
-  patientModel: PatientModel = new PatientModel();
+  patientList: PatientModel[];
   constructor(private formBuilder: FormBuilder, private patientService: PatientService) { }
 
   ngOnInit() {
-    this.patientRegistrationFormGroup = this.formBuilder.group({
-      "firstName": ['', Validators.required],
-      "middleName": [''],
-      "lastName": ['', Validators.required],
-      "gender": ['Male'],
-      "age": ['', Validators.required],
-      "mobileNo": ['', Validators.required],
-      "emergencyContactNo": [''],
-      "address": ['', [Validators.required, Validators.maxLength(200)]],
-    });
+    // Uncomment below line when DB connection is not working
+    this.patientList = this.getPatientDummyData();
+    //this.getPatients();
   }
-
-  //Short way of accessing form controls
-  get rf() { return this.patientRegistrationFormGroup.controls; }
-
-  submit() {
-    console.log("called..");
-    this.patientModel = <PatientModel>this.patientRegistrationFormGroup.value;
-    this.patientService.save(this.patientModel).subscribe(data => { 
-      console.log(data); 
-    });
+  getPatients() {
+    this.patientService.getPatients().subscribe(response=>
+      {
+        if (response.statusCode == 200) {
+          this.patientList = response.data.Patients
+          // this.patientList = new MatTableDataSource(response.data.Patients);
+        // this.patients.paginator = this.paginator;
+        }
+      }
+     );
   }
-
-  errorHandler(controlName: string, error: string) {
-    return this.patientRegistrationFormGroup.controls[controlName].hasError(error);
-  }
-
-  // Reset form values
-  reset() {
-    this.patientRegistrationFormGroup.reset();
-    this.rf.gender.setValue('Male');
+  getPatientDummyData() {
+    return [
+      { id: "1", firstName: "Sandeep", middleName: "H", lastName: "Satpute", address: "Gondhale Nagar, Hadapsar", mobileNo: 9561809294, emergencyContactNo: 131321321, age: 33, gender: "", token: 0, patientAppointmentDate: new Date() },
+      { id: "2", firstName: "Amit", middleName: "", lastName: "Vernekar", address: "Tukai Darshan, Hadapsar", mobileNo: 987456123, emergencyContactNo: 131321321, age: 33, gender: "", token: 0, patientAppointmentDate: new Date() },
+      { id: "3", firstName: "Vipul", middleName: "", lastName: "Jadhav", address: "Katraj", mobileNo: 976685447, emergencyContactNo: 131321321, age: 33, gender: "", token: 0, patientAppointmentDate: new Date() }];
   }
 }

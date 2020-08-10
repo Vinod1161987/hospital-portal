@@ -1,7 +1,7 @@
-<app-search></app-search>
+<!-- <app-search></app-search> -->
 <mat-grid-list cols="2">
     <mat-grid-tile>
-        <app-patientlist></app-patientlist>
+        <app-patientlist [patientList]= "patientList"></app-patientlist>
     </mat-grid-tile>
     <!-- <mat-grid-tile>
         <app-patient-queue-list></app-patient-queue-list>
@@ -9,6 +9,4 @@
     <mat-grid-tile>
         <app-add-patient></app-add-patient>
     </mat-grid-tile>
-  </mat-grid-list>
-
-
+</mat-grid-list>

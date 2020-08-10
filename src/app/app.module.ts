@@ -23,7 +23,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MenuComponent } from './components/menu/menu.component';
 import { PatientComponent } from './components/patient/patient.component';
-import { SearchComponent } from './components/patient/search/search.component';
 import { PatientlistComponent } from './components/patient/patientlist/patientlist.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -39,7 +38,6 @@ import { AddPatientComponent } from './components/patient/add-patient/add-patien
     DashboardComponent,
     MenuComponent,
     PatientComponent,
-    SearchComponent,
     PatientlistComponent,
     PatientQueueListComponent,
     AddPatientComponent

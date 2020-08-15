@@ -39,13 +39,13 @@
     </table>
 
     <table class="mat-elevation-z8">
-        <tr *ngIf="!searchPatientList.length">
+        <tr *ngIf="!patientList.length">
             <td style="text-align: center;" [attr.colspan]="displayedColumns.length">
                 No Patient Found!
             </td>
         </tr>
     </table>
 </div>
-<mat-paginator *ngIf="searchPatientList.length > 0" [pageSizeOptions]="[2,4,8,10,12,14]" [length]="100" [pageSize]="2"
+<mat-paginator *ngIf="patientList.length > 0" [pageSizeOptions]="[2,4,8,10,12,14]" [length]="100" [pageSize]="2"
     showFirstLastButton>
 </mat-paginator>

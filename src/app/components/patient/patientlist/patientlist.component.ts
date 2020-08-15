@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, SimpleChange, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { PatientModel } from 'src/app/models/patient-model';
@@ -11,7 +11,7 @@ import { UtilityService } from '../../../helpers/service/utility.service';
   templateUrl: './patientlist.component.html',
   styleUrls: ['./patientlist.component.scss']
 })
-export class PatientlistComponent implements OnInit {
+export class PatientlistComponent implements OnInit, OnChanges {
   patients: MatTableDataSource<PatientModel>;
   displayedColumns: string[] = ['fullName', 'mobileNo', 'actions'];
 
@@ -23,13 +23,18 @@ export class PatientlistComponent implements OnInit {
   patientSearchControl = new FormControl();
   @Input() patientList: PatientModel[];
   searchPatientList: PatientModel[] = [];
-  constructor(private utilityService:UtilityService) {
+  constructor(private utilityService: UtilityService) {
   }
 
   ngOnInit() {
     this.getPatients();
   }
 
+  ngOnChanges(){
+    console.log("ngOnChanges****** " + JSON.stringify(this.patientList));
+    this.getPatients();
+  }
+  
   getPatients() {
     this.searchPatientList = _.cloneDeep(this.patientList);
     this.patients = new MatTableDataSource(this.patientList);
@@ -47,10 +52,10 @@ export class PatientlistComponent implements OnInit {
     });
     this.patients = new MatTableDataSource(this.searchPatientList);
   }
-  
+
   clearSearch() {
     this.searchValue = '';
     this.patients = new MatTableDataSource(this.patientList);
-    this.searchPatientList = _.cloneDeep(this.patientList);
+    //this.searchPatientList = _.cloneDeep(this.patientList);
   }
 }

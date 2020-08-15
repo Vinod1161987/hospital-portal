@@ -18,16 +18,18 @@ export class PatientComponent implements OnInit {
     //this.getPatients();
   }
   getPatients() {
-    this.patientService.getPatients().subscribe(response=>
-      {
-        if (response.statusCode == 200) {
-          this.patientList = response.data.Patients
-          // this.patientList = new MatTableDataSource(response.data.Patients);
-        // this.patients.paginator = this.paginator;
-        }
+    this.patientService.getPatients().subscribe(response => {
+      if (response.statusCode == 200) {
+        this.patientList = response.data.Patients
       }
-     );
+    }
+    );
   }
+  getNewPatient(patient: PatientModel) {
+    this.patientList.unshift(patient);
+    this.patientList = [...this.patientList]
+  }
+
   getPatientDummyData() {
     return [
       { id: "1", firstName: "Sandeep", middleName: "H", lastName: "Satpute", address: "Gondhale Nagar, Hadapsar", mobileNo: 9561809294, emergencyContactNo: 131321321, age: 33, gender: "", token: 0, patientAppointmentDate: new Date() },

@@ -1,12 +1,11 @@
-<!-- <app-search></app-search> -->
-<mat-grid-list cols="2">
+<mat-grid-list cols="3" rowHeight="700px">
     <mat-grid-tile>
-        <app-patientlist [patientList]= "patientList"></app-patientlist>
+        <app-patientlist [patientList]="patientList"></app-patientlist>
     </mat-grid-tile>
-    <!-- <mat-grid-tile>
-        <app-patient-queue-list></app-patient-queue-list>
-    </mat-grid-tile> -->
     <mat-grid-tile>
-        <app-add-patient></app-add-patient>
+        <app-patient-queue-list></app-patient-queue-list>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <app-add-patient (newPatientChanges)="getNewPatient($event)"></app-add-patient>
     </mat-grid-tile>
 </mat-grid-list>
